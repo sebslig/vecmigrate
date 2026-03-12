@@ -1,0 +1,16 @@
+# Migration Configuration
+source:
+  provider: pinecone
+  api_key: ${PINECONE_API_KEY}
+  environment: us-west1-gcp
+  index_name: production-vectors
+
+target:
+  provider: chroma
+  path: ./data/chroma_db
+  collection_name: legacy_import
+
+settings:
+  batch_size: 100
+  use_agents: true
+  checkpoint_file: migration_state.json
